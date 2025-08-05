@@ -43,6 +43,7 @@ Searching up "event id registry key updated" will provide us the following:
 <img width="1157" height="482" alt="Pasted image 20250804153856" src="https://github.com/user-attachments/assets/a34285e5-b2c8-4c22-943e-d99ecb46b6f0" />
 
 When querying for Event ID 4657 and the keywork "A1berto", no events are returned. To save you the hassle, this is where I fell down a rabbit hole and was looking through a lot of logs to make sense of all fields available.
+
 <img width="452" height="221" alt="Pasted image 20250804154656" src="https://github.com/user-attachments/assets/37525cdc-6687-4f5a-a74b-f2fbfae45fdd" />
 
 So after an hour of looking through those countless logs, I had found out that the logs were also ingesting Sysmon data so decided to look up the Sysmon ID instead of registry key updates.
@@ -120,6 +121,7 @@ It took me straight up 30 minutes to figure out that there were 2-4 different ev
 <img width="1268" height="636" alt="Pasted image 20250804163054" src="https://github.com/user-attachments/assets/2065fe21-8aa5-4448-9ee0-f0e4a38c7a24" />
 
 The correct EventID was 4103
+
 <img width="399" height="273" alt="Pasted image 20250804163323" src="https://github.com/user-attachments/assets/c710bc67-c929-4ee3-acea-721c27e29581" />
 
 Answer: 79
@@ -140,10 +142,11 @@ This area I've highlighted is the encrypted part of this powershell command. I c
 My guess on Base64 was correct but you'll have to decode the text into UTF-16LE (1200) as the "From Base64" block will default to UTF 8.
 <img width="1532" height="878" alt="Pasted image 20250804164428" src="https://github.com/user-attachments/assets/fc2ed25b-e151-4c1c-acc2-ad34d1cd752f" />
 
-Within the decoded text, we have yet another Base 64 string to decode.![[Pasted image 20250804164557.png]]
+Within the decoded text, we have yet another Base 64 string to decode.
 <img width="963" height="209" alt="Pasted image 20250804164557" src="https://github.com/user-attachments/assets/bb348a3f-292c-4dd6-9731-48a02c489de8" />
 
 This is just the domain part of the URL, looks like the question wants us to find the full URL. Going back to the full decoded Base64 string, there was a URI sitting in that line of code.
+
 <img width="275" height="106" alt="Pasted image 20250804164853" src="https://github.com/user-attachments/assets/50cc80b0-0094-479a-b6a8-84153ede0d10" />
 
 Putting it together, we have:
