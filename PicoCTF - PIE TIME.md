@@ -7,7 +7,7 @@
 
 The address of main() is different each time we connect to the server running the vuln.c binary
 
-![image.png](image.png)
+<img width="480" height="225" alt="image" src="https://github.com/user-attachments/assets/8766b615-03ce-48d5-8151-4066f921afb4" />
 
 The goal of this challenge is to call the win() function, which reads out the flag.
 
@@ -23,7 +23,7 @@ foo();`
     - This code takes an address stored in `val`, and then calls the function at that address.
 - We can use this to call the win() function
 
-![image.png](image%201.png)
+<img width="427" height="821" alt="image 1" src="https://github.com/user-attachments/assets/540fc07e-13c5-4cec-a76f-0d7249001a81" />
 
 Because the offset between the two functions are the same, we can do PIE bypass via finding relative offsets
 
@@ -32,11 +32,11 @@ Because the offset between the two functions are the same, we can do PIE bypass 
 - `x`  = examine memory
 - Left side of output = memory address being examined
 
-![image.png](image%202.png)
+<img width="550" height="439" alt="image 2" src="https://github.com/user-attachments/assets/206cc134-939b-46de-a9d4-f3c21d22902f" />
 
 Relative offset between win() and main() in hex is:
 
-![image.png](image%203.png)
+<img width="217" height="63" alt="image 3" src="https://github.com/user-attachments/assets/7b24eab4-247f-4199-a681-3c787734576f" />
 
 **Getting the Flag**
 
@@ -52,5 +52,4 @@ Relative offset between win() and main() in hex is:
 - ASLR (Address Space Layout Randomization) is used to add another layer of randomization
     - Randomizes stack, heap, libraries, and PIE binaries
     - But relative offsets within one PIE binary stay fixed
-- Real binaries don’t try to leak memory address and exploits try to leak those addresses
--
+- Real binaries don’t try to leak memory addresses and exploits try to leak those addresses
